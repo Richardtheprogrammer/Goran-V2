@@ -1,0 +1,8 @@
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\bin\Debug\Goran.exe.config
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\bin\Debug\Goran.exe
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\bin\Debug\Goran.pdb
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\obj\Debug\Goran.csprojResolveAssemblyReference.cache
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\obj\Debug\Goran.exe
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\obj\Debug\Goran.pdb
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\obj\Debug\Goran.Properties.Resources.resources
+c:\users\richard.ygman\documents\visual studio 2017\Projects\Goran\Goran\obj\Debug\Goran.csproj.GenerateResource.Cache
