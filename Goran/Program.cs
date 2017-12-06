@@ -2,50 +2,81 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Diagnostics;
 using System.IO;
+using System.Resources;
+using System.Reflection;
+using System.Globalization;
 
 namespace Goran
 {
     class Program
     {
+        private static ResourceSet _resource;
+        private static string _currrentLanguage;
+
         static void Main(string[] args)
         {
-
-           
-
+            SetLanguage("sv-SE");
             STARTMENU();
+           
+        }
+
+        private static void Stefan()
+        {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            SetLanguage("en-US");
+            Console.WriteLine(GetStringValue("Menu_Color"));
+            var c = new CultureInfo("sv-SE");
+            SetLanguage("sv-SE");
+            Console.WriteLine(GetStringValue("Menu_Color"));
+            SetLanguage("fr-FR");
+            Console.WriteLine(GetStringValue("Menu_Color"));
+            SetLanguage("nb-NO");
+            Console.WriteLine(GetStringValue("Menu_Color"));
+
+            Console.ReadLine();
 
         }
 
-        
+        private static void SetLanguage(string language)
+        {
+            _resource = Goran.Resources.Resources.ResourceManager.GetResourceSet(new CultureInfo(language), true, true);
+            _currrentLanguage = language;
+        }
    
+        private static string GetStringValue(string input)
+        {
+            return _resource.GetString(input);
+        }
 
        
         static void INSTÄLLNINGARMENU()
         {
-
+            
         }
 
         static void INSTÄLLNINGAR()
         {
-
+            
         }
 
-
-        static void CREDIT()
+        static void orginalkod()
         {
             try
             {
+
+
                 using (StreamReader sr = new StreamReader("CREDIT_MONGO.txt", Encoding.GetEncoding("windows-1252")))
                 {
                     string line;
 
-                    while((line = sr.ReadLine()) != null)
+                    while ((line = sr.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
-                     
+
                     }
                 }
             }
@@ -55,6 +86,14 @@ namespace Goran
                 Console.WriteLine(e.Message);
                 Console.ReadKey(true);
             }
+
+        }
+
+        static void CREDIT()
+        {
+
+            var lines = File.ReadAllLines("CREDIT_MONGO.txt");
+            lines.ToList().ForEach(line => Console.WriteLine(line));
         }
 
         static void WEBBROWSERMENU()
@@ -107,40 +146,44 @@ namespace Goran
             }
         }
 
-        static void UPPDELNING()
+        static void MENU()
         {
-            Console.WriteLine("1)FÄRG");
-            Console.WriteLine("2)INSTÄLLNINGAR");
-            Console.WriteLine("3)CREDITS");
+            Console.WriteLine($"1){GetStringValue("Menu_Color")}");
+            Console.WriteLine($"2){GetStringValue("Menu_Settings")}");
+            Console.WriteLine($"3){GetStringValue("Menu_Credits")}");
             Console.WriteLine("4)GITHUB");
-            ConsoleKeyInfo Muppspelning;
-            Muppspelning = Console.ReadKey(true);
-            MENUUPPDELNINGEN(Muppspelning);
+            Console.WriteLine("5)Språk");
+            Console.WriteLine("0)Exit");
+            var input = Console.ReadLine().Trim();
+            MENUUPPDELNINGEN(input);
 
          
 
         }
 
-
-
+        
 
         //ändrad nedanför//
-        static void MENUUPPDELNINGEN(ConsoleKeyInfo input)
+        static void MENUUPPDELNINGEN(string input)
         {
-            switch (input.KeyChar)
+            switch (input)
             {
-                case '1':
+                case "0":
+                    Environment.Exit(0);
+                    break;
+
+                case "1":
                     Console.Clear();
                     FÄRGMENU();
 
                     break;
 
-                case '2':
+                case "2":
                     Console.Clear();
                     INSTÄLLNINGARMENU();
                     break;
 
-                case '3':
+                case "3":
                     Console.Clear();
                     CREDIT();
                     Console.ReadKey(true);
@@ -148,9 +191,26 @@ namespace Goran
                     STARTMENU();
                     break;
 
-                case '4':
+                case "4":
                     Console.Clear();
                     WEBBROWSERMENU();
+                    break;
+
+                case "5":
+                    Console.Clear();
+                    if (_currrentLanguage == "en-US")
+                    {
+                        SetLanguage("sv-SE");
+                    }
+                    else
+                    {
+                        SetLanguage("en-US");
+                    }
+                    STARTMENU();
+                    break;
+                default:
+                    Console.Clear();
+                    STARTMENU();
                     break;
             }
         }
@@ -158,16 +218,21 @@ namespace Goran
         static void STARTMENU()
         {
             Console.Title = "MENU";
-            Console.WriteLine("       0   0");
-            Console.WriteLine("                                        ");
-            Console.WriteLine("00000  00000  00000   00000  0         0");
-            Console.WriteLine("0   0  0   0  0   0   0   0  0 0       0");
-            Console.WriteLine("0   0  0   0  00000   0   0  0   0     0");
-            Console.WriteLine("00000  0   0  000     00000  0     0   0");
-            Console.WriteLine("0      0   0  0  0    0   0  0       0 0");
-            Console.WriteLine("0      0   0  0   0   0   0  0        00");
-            Console.WriteLine("00000  00000  0    0  0   0  0         0");
-            UPPDELNING();
+            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            Console.WriteLine("┃                                          ┃");
+            Console.WriteLine("┃       0   0                              ┃");
+            Console.WriteLine("┃                                          ┃");
+            Console.WriteLine("┃ 00000  00000  00000   00000  0         0 ┃");
+            Console.WriteLine("┃ 0   0  0   0  0   0   0   0  0 0       0 ┃");
+            Console.WriteLine("┃ 0   0  0   0  00000   0   0  0   0     0 ┃");
+            Console.WriteLine("┃ 00000  0   0  000     00000  0     0   0 ┃");
+            Console.WriteLine("┃ 0      0   0  0  0    0   0  0       0 0 ┃");
+            Console.WriteLine("┃ 0      0   0  0   0   0   0  0        00 ┃");
+            Console.WriteLine("┃ 00000  00000  0    0  0   0  0         0 ┃");
+            Console.WriteLine("┃                                          ┃");
+            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            MENU();
+
         }
 
         static void FÄRGER(ConsoleKeyInfo input)
