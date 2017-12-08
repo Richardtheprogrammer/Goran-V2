@@ -8,7 +8,9 @@ using System.IO;
 using System.Resources;
 using System.Reflection;
 using System.Globalization;
+using System.Media;
 
+using WMPLib;
 namespace Goran
 {
     class Program
@@ -61,7 +63,7 @@ namespace Goran
             ConsoleKeyInfo Usettings;
             Usettings = Console.ReadKey(true);
             INSTÄLLNINGAR(Usettings);
-        }
+        }  //needs translating
 
         static void INSTÄLLNINGAR(ConsoleKeyInfo input)
         {
@@ -87,6 +89,7 @@ namespace Goran
             }
         }
         //inställningar slutar
+
         //HEIGHT STARTS
         static void HHEIGHTMENU()
         {
@@ -98,8 +101,7 @@ namespace Goran
 
         }
             //HEIGHT ENDS
-
-            
+           
             //WIDTH STARTS
             static void WWIDTHMENU()
         {
@@ -193,9 +195,6 @@ namespace Goran
         }
         //ENDS//
 
-        
-      
-
             // WEBB STARTS
         static void WEBBROWSERMENU()
         {
@@ -263,7 +262,6 @@ namespace Goran
 
         }
 
-       
         //ändrad nedanför//
         static void MENUUPPDELNINGEN(string input)
         {
@@ -312,6 +310,7 @@ namespace Goran
                 default: 
                     Console.Clear();
                     Console.WriteLine("använd endast de siffror som står där");
+                    Console.WriteLine("please use only the numbers u can see in menu");
                     Console.ReadKey(true);
                     Console.Clear();
                     STARTMENU();
@@ -382,6 +381,49 @@ namespace Goran
             ConsoleKeyInfo Gfärger;
             Gfärger = Console.ReadKey(true);
             FÄRGER(Gfärger);
+        }  //needs translator
+
+        //musik1 starts
+        static void MUSIKMENUU1()
+        {
+            Console.WriteLine("välj följande musiklåtar");
+            Console.WriteLine("1)28 days later-in the house in a heart");
+            Console.WriteLine("2)Axel Thesleff - Bad Karma ( Dj El-CasT House Remix)");
+            Console.WriteLine("3)Axel Thesleff - Bad Karma [Bass Boosted] (1)");
+            Console.WriteLine("4)Hitman_AgenT_47_-_Ending_Song_--_X_Ambassadors_Jam");
+            Console.WriteLine("5)Hitman- Agent 47 Soundtrack - Two Wounded Bird");
+            Console.WriteLine("6)Hitman-Agent 47 Theme song (Original)");
+            Console.WriteLine("7)In This Moment - Big Bad Wolf (Official Video)");
+            Console.WriteLine("8)MUSIK MENU2");
+            Console.WriteLine("9)STARTMENU");
+        }
+
+        static void MUSIKE1()
+        {
+            
+
+
+        }
+        //musik1 ends
+        static void MUSIKMENUU2()
+        {
+            Console.WriteLine("1)Rainbow Six Siege Song - Rainbows In The Dark - #NerdOut!");
+            Console.WriteLine("2)Sub Focus - Last Jungle");
+            Console.WriteLine("2)Suicide Squad Song - Voices In My Head - #NerdOut! (Unofficial Suicide Squad Soundtrack)");
+            Console.WriteLine("3)The last of the Mohicans The Best Ever by Alexandro Querevalú");
+            Console.WriteLine("4)WATCH DOGS 2 SONG - IM A WATCH DOG - #NerdOut");
+            Console.WriteLine("5)Vennu Mallesh - It's My Life What Ever I Wanna Do");
+            Console.WriteLine("6)Iyaz - Replay (Prequel) [Music Video]");
+            Console.WriteLine("7)Janji - Heroes Tonight (feat. Johnning) [NCS Release]");
+            Console.WriteLine("8)MUSIK MENU");
+            Console.WriteLine("9)STARTMENU");
+        }
+
+        static void MUSIKE2()
+        {
+
+            
+
         }
     }
 }
