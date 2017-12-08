@@ -123,6 +123,15 @@
   <data name="Menu_Credits" xml:space="preserve">
     <value>Om</value>
   </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="Menu_Github" xml:space="preserve">
+    <value>Github</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Språk</value>
+  </data>
   <data name="Menu_Settings" xml:space="preserve">
     <value>Inställningar</value>
   </data>

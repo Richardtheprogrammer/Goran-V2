@@ -52,33 +52,136 @@ namespace Goran
             return _resource.GetString(input);
         }
 
-       
+       //inställningar/
         static void INSTÄLLNINGARMENU()
         {
-            
+            Console.WriteLine("1)Höjd");
+            Console.WriteLine("2)Bredd");
+            Console.WriteLine("3)Tillbaka");
+            ConsoleKeyInfo Usettings;
+            Usettings = Console.ReadKey(true);
+            INSTÄLLNINGAR(Usettings);
         }
 
-        static void INSTÄLLNINGAR()
+        static void INSTÄLLNINGAR(ConsoleKeyInfo input)
         {
-            
+            switch (input.KeyChar)
+            {
+                case '1':
+                    Console.Clear();
+                    HHEIGHTMENU();
+
+                    break;
+
+                case '2':
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '3':
+                    Console.Clear();
+                    STARTMENU();
+
+                    break;
+
+            }
+        }
+        //inställningar slutar
+        //HEIGHT STARTS
+        static void HHEIGHTMENU()
+        {
+
         }
 
-        static void orginalkod()
+        static void HHEIGHT()
+        {
+
+        }
+            //HEIGHT ENDS
+
+            
+            //WIDTH STARTS
+            static void WWIDTHMENU()
+        {
+            Console.WriteLine("1)50");
+            Console.WriteLine("2)100");
+            Console.WriteLine("3)150");
+            Console.WriteLine("4)200");
+            Console.WriteLine("5)250");
+            Console.WriteLine("6)300");
+            Console.WriteLine("7)MAX");
+            Console.WriteLine("8)Tillbaka");
+            ConsoleKeyInfo UWIDTH;
+            UWIDTH = Console.ReadKey(true);
+            WWIDTH(UWIDTH);
+
+        }
+
+        static void WWIDTH(ConsoleKeyInfo input)
+        {
+            switch(input.KeyChar)
+            {
+                case '1':
+                    Console.WindowWidth = 50;
+                    Console.Clear();
+                    WWIDTHMENU();
+
+                    break;
+
+                case '2':
+                    Console.WindowHeight = 50;
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '3':
+                    Console.WindowHeight = 100;
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '4':
+                    Console.WindowHeight = 150;
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '5':
+                    Console.WindowHeight = 200;
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '6':
+                    Console.WindowHeight = 300;
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '7':
+                    Console.WindowHeight = 320;
+                    Console.Clear();
+                    WWIDTHMENU();
+                    break;
+
+                case '8':
+                    Console.Clear();
+                    STARTMENU();
+                    break;
+
+            }
+        }
+            //WIDTH ENDS
+
+            //orginalkod för läsa in textfiler//
+        static void OrginalKod()
         {
             try
             {
 
 
-                using (StreamReader sr = new StreamReader("CREDIT_MONGO.txt", Encoding.GetEncoding("windows-1252")))
-                {
-                    string line;
-
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        Console.WriteLine(line);
-
-                    }
-                }
+                var lines = File.ReadAllLines("CREDIT_MONGO.txt", Encoding.GetEncoding("windows-1252"));
+                lines.ToList().ForEach(line => Console.WriteLine(line));
             }
             catch (Exception e)
             {
@@ -88,14 +191,12 @@ namespace Goran
             }
 
         }
+        //ENDS//
 
-        static void CREDIT()
-        {
+        
+      
 
-            var lines = File.ReadAllLines("CREDIT_MONGO.txt");
-            lines.ToList().ForEach(line => Console.WriteLine(line));
-        }
-
+            // WEBB STARTS
         static void WEBBROWSERMENU()
         {
             Console.WriteLine("1)chrome");
@@ -145,15 +246,16 @@ namespace Goran
 
             }
         }
+        //WEB ENDS
 
         static void MENU()
         {
             Console.WriteLine($"1){GetStringValue("Menu_Color")}");
             Console.WriteLine($"2){GetStringValue("Menu_Settings")}");
             Console.WriteLine($"3){GetStringValue("Menu_Credits")}");
-            Console.WriteLine("4)GITHUB");
-            Console.WriteLine("5)Språk");
-            Console.WriteLine("0)Exit");
+            Console.WriteLine($"4){GetStringValue("Menu_Github")}");
+            Console.WriteLine($"5){GetStringValue("Menu_Language")}");
+            Console.WriteLine($"6){GetStringValue("Menu_Exit")}");
             var input = Console.ReadLine().Trim();
             MENUUPPDELNINGEN(input);
 
@@ -161,8 +263,7 @@ namespace Goran
 
         }
 
-        
-
+       
         //ändrad nedanför//
         static void MENUUPPDELNINGEN(string input)
         {
@@ -185,7 +286,7 @@ namespace Goran
 
                 case "3":
                     Console.Clear();
-                    CREDIT();
+                    OrginalKod();
                     Console.ReadKey(true);
                     Console.Clear();
                     STARTMENU();
@@ -208,7 +309,10 @@ namespace Goran
                     }
                     STARTMENU();
                     break;
-                default:
+                default: 
+                    Console.Clear();
+                    Console.WriteLine("använd endast de siffror som står där");
+                    Console.ReadKey(true);
                     Console.Clear();
                     STARTMENU();
                     break;
@@ -217,20 +321,21 @@ namespace Goran
         
         static void STARTMENU()
         {
+
             Console.Title = "MENU";
-            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            Console.WriteLine("┃                                          ┃");
-            Console.WriteLine("┃       0   0                              ┃");
-            Console.WriteLine("┃                                          ┃");
-            Console.WriteLine("┃ 00000  00000  00000   00000  0         0 ┃");
-            Console.WriteLine("┃ 0   0  0   0  0   0   0   0  0 0       0 ┃");
-            Console.WriteLine("┃ 0   0  0   0  00000   0   0  0   0     0 ┃");
-            Console.WriteLine("┃ 00000  0   0  000     00000  0     0   0 ┃");
-            Console.WriteLine("┃ 0      0   0  0  0    0   0  0       0 0 ┃");
-            Console.WriteLine("┃ 0      0   0  0   0   0   0  0        00 ┃");
-            Console.WriteLine("┃ 00000  00000  0    0  0   0  0         0 ┃");
-            Console.WriteLine("┃                                          ┃");
-            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            Console.WriteLine("††††††††††††††††††††††††††††††††††††††††††††");
+            Console.WriteLine("†                                          †");
+            Console.WriteLine("†       0   0                              †");
+            Console.WriteLine("†                                          †");
+            Console.WriteLine("† 00000  00000  00000   00000  0         0 †");
+            Console.WriteLine("† 0   0  0   0  0   0   0   0  0 0       0 †");
+            Console.WriteLine("† 0   0  0   0  00000   0   0  0   0     0 †");
+            Console.WriteLine("† 00000  0   0  000     00000  0     0   0 †");
+            Console.WriteLine("† 0      0   0  0  0    0   0  0       0 0 †");
+            Console.WriteLine("† 0      0   0  0   0   0   0  0        00 †");
+            Console.WriteLine("† 00000  00000  0    0  0   0  0         0 †");
+            Console.WriteLine("†                                          †");
+            Console.WriteLine("††††††††††††††††††††††††††††††††††††††††††††");
             MENU();
 
         }
