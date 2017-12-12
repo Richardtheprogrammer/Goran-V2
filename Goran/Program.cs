@@ -9,8 +9,6 @@ using System.Resources;
 using System.Reflection;
 using System.Globalization;
 using System.Media;
-
-using WMPLib;
 namespace Goran
 {
     class Program
@@ -21,9 +19,108 @@ namespace Goran
         static void Main(string[] args)
         {
             SetLanguage("sv-SE");
+            //SetLanguage("en-us");
             STARTMENU();
-           
+
         }
+        static void STARTMENU()
+        {
+
+            Console.Title = "MENU";
+            Console.WriteLine("††††††††††††††††††††††††††††††††††††††††††††");
+            Console.WriteLine("†                                          †");
+            Console.WriteLine("†       0   0                              †");
+            Console.WriteLine("†                                          †");
+            Console.WriteLine("† 00000  00000  00000   00000  0         0 †");
+            Console.WriteLine("† 0   0  0   0  0   0   0   0  0 0       0 †");
+            Console.WriteLine("† 0   0  0   0  00000   0   0  0   0     0 †");
+            Console.WriteLine("† 00000  0   0  000     00000  0     0   0 †");
+            Console.WriteLine("† 0      0   0  0  0    0   0  0       0 0 †");
+            Console.WriteLine("† 0      0   0  0   0   0   0  0        00 †");
+            Console.WriteLine("† 00000  00000  0    0  0   0  0         0 †");
+            Console.WriteLine("†                                          †");
+            Console.WriteLine("††††††††††††††††††††††††††††††††††††††††††††");
+            MENU();
+
+        }
+
+        static void MENU()
+        {
+            Console.WriteLine($"1){GetStringValue("Menu_Color")}");
+            Console.WriteLine($"2){GetStringValue("Menu_Settings")}");
+            Console.WriteLine($"3){GetStringValue("Menu_Credits")}");
+            Console.WriteLine($"4){GetStringValue("Menu_Github")}");
+            Console.WriteLine($"5){GetStringValue("Menu_Language")}");
+            Console.WriteLine($"6){GetStringValue("Menu_Exit")}");
+            Console.WriteLine("7)go to new form");
+            var input = Console.ReadLine().Trim();
+            MENUUPPDELNINGEN(input);
+
+
+
+        }
+        //ändrad nedanför//
+        static void MENUUPPDELNINGEN(string input)
+        {
+            switch (input)
+            {
+                case "0":
+                    Environment.Exit(0);
+                    break;
+
+                case "1":
+                    Console.Clear();
+                    FÄRGMENU();
+
+                    break;
+
+                case "2":
+                    Console.Clear();
+                    INSTÄLLNINGARMENU();
+                    break;
+
+                case "3":
+                    Console.Clear();
+                    OrginalKod();
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    STARTMENU();
+                    break;
+
+                case "4":
+                    Console.Clear();
+                    WEBBROWSERMENU();
+                    break;
+
+                case "5":
+                    Console.Clear();
+                    if (_currrentLanguage == "en-US")
+                    {
+                        SetLanguage("sv-SE");
+                    }
+                    else
+                    {
+                        SetLanguage("en-US");
+                    }
+                    STARTMENU();
+                    break;
+
+                case "7":
+                    Program2.Program2Main();
+                    break;
+
+                default:
+                    Console.Clear();
+                    Console.WriteLine("använd endast de siffror som står där");
+                    Console.WriteLine("please use only the numbers u can see in menu");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    STARTMENU();
+                    break;
+            }
+        }
+
+
 
         private static void Stefan()
         {
@@ -94,11 +191,79 @@ namespace Goran
         static void HHEIGHTMENU()
         {
 
+            Console.WriteLine("1)10");
+            Console.WriteLine("2)20");
+            Console.WriteLine("3)30");
+            Console.WriteLine("4)40");
+            Console.WriteLine("5)50");
+            Console.WriteLine("6)60");
+            Console.WriteLine("7)70");
+            Console.WriteLine("8)80");
+            Console.WriteLine("9)MAX");
+            ConsoleKeyInfo UHEIGHT;
+            UHEIGHT = Console.ReadKey(true);
+            HHEIGHT(UHEIGHT);
         }
 
-        static void HHEIGHT()
+        static void HHEIGHT(ConsoleKeyInfo input)
         {
+            switch(input.KeyChar)
+            {
+                case '1':
+                    Console.WindowHeight = 10;
+                    Console.Clear();
+                    MENU();
+                    break;
 
+                case '2':
+                    Console.WindowHeight = 30;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '3':
+                    Console.WindowHeight = 30;                       ;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '4':
+                    Console.WindowHeight = 40;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '5':
+                    Console.WindowHeight = 50;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '6':
+                    Console.WindowHeight = 60;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '7':
+                    Console.WindowHeight = 70;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '8':
+                    Console.WindowHeight = 80;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+                case '9':
+                    Console.WindowHeight = 86;
+                    Console.Clear();
+                    MENU();
+                    break;
+
+            }
         }
             //HEIGHT ENDS
            
@@ -247,102 +412,26 @@ namespace Goran
         }
         //WEB ENDS
 
-        static void MENU()
-        {
-            Console.WriteLine($"1){GetStringValue("Menu_Color")}");
-            Console.WriteLine($"2){GetStringValue("Menu_Settings")}");
-            Console.WriteLine($"3){GetStringValue("Menu_Credits")}");
-            Console.WriteLine($"4){GetStringValue("Menu_Github")}");
-            Console.WriteLine($"5){GetStringValue("Menu_Language")}");
-            Console.WriteLine($"6){GetStringValue("Menu_Exit")}");
-            var input = Console.ReadLine().Trim();
-            MENUUPPDELNINGEN(input);
-
-         
-
-        }
-
-        //ändrad nedanför//
-        static void MENUUPPDELNINGEN(string input)
-        {
-            switch (input)
-            {
-                case "0":
-                    Environment.Exit(0);
-                    break;
-
-                case "1":
-                    Console.Clear();
-                    FÄRGMENU();
-
-                    break;
-
-                case "2":
-                    Console.Clear();
-                    INSTÄLLNINGARMENU();
-                    break;
-
-                case "3":
-                    Console.Clear();
-                    OrginalKod();
-                    Console.ReadKey(true);
-                    Console.Clear();
-                    STARTMENU();
-                    break;
-
-                case "4":
-                    Console.Clear();
-                    WEBBROWSERMENU();
-                    break;
-
-                case "5":
-                    Console.Clear();
-                    if (_currrentLanguage == "en-US")
-                    {
-                        SetLanguage("sv-SE");
-                    }
-                    else
-                    {
-                        SetLanguage("en-US");
-                    }
-                    STARTMENU();
-                    break;
-                default: 
-                    Console.Clear();
-                    Console.WriteLine("använd endast de siffror som står där");
-                    Console.WriteLine("please use only the numbers u can see in menu");
-                    Console.ReadKey(true);
-                    Console.Clear();
-                    STARTMENU();
-                    break;
-            }
-        }
         
-        static void STARTMENU()
+
+       
+
+        static void FÄRGMENU()
         {
+            Console.WriteLine("1)mörk");
+            Console.WriteLine("2)ljus");
+            Console.WriteLine("3)återställ");
+            Console.WriteLine("4)tillbaka");
+            ConsoleKeyInfo Gfärger;
+            Gfärger = Console.ReadKey(true);
+            FÄRGER(Gfärger);
+        }  //needs translator
 
-            Console.Title = "MENU";
-            Console.WriteLine("††††††††††††††††††††††††††††††††††††††††††††");
-            Console.WriteLine("†                                          †");
-            Console.WriteLine("†       0   0                              †");
-            Console.WriteLine("†                                          †");
-            Console.WriteLine("† 00000  00000  00000   00000  0         0 †");
-            Console.WriteLine("† 0   0  0   0  0   0   0   0  0 0       0 †");
-            Console.WriteLine("† 0   0  0   0  00000   0   0  0   0     0 †");
-            Console.WriteLine("† 00000  0   0  000     00000  0     0   0 †");
-            Console.WriteLine("† 0      0   0  0  0    0   0  0       0 0 †");
-            Console.WriteLine("† 0      0   0  0   0   0   0  0        00 †");
-            Console.WriteLine("† 00000  00000  0    0  0   0  0         0 †");
-            Console.WriteLine("†                                          †");
-            Console.WriteLine("††††††††††††††††††††††††††††††††††††††††††††");
-            MENU();
-
-        }
 
         static void FÄRGER(ConsoleKeyInfo input)
         {
-          
-            switch(input.KeyChar)
+
+            switch (input.KeyChar)
             {
                 case '1':
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -371,17 +460,6 @@ namespace Goran
 
             }
         }
-
-        static void FÄRGMENU()
-        {
-            Console.WriteLine("1)mörk");
-            Console.WriteLine("2)ljus");
-            Console.WriteLine("3)återställ");
-            Console.WriteLine("4)tillbaka");
-            ConsoleKeyInfo Gfärger;
-            Gfärger = Console.ReadKey(true);
-            FÄRGER(Gfärger);
-        }  //needs translator
 
         //musik1 starts
         static void MUSIKMENUU1()
